@@ -1,6 +1,7 @@
 const users = require('../models/user');
 
 const findAllUsers = async (req, res, next) => {
+  console.log('GET /users')
   req.usersArray = await users.find({});
   next();
 }
@@ -49,7 +50,7 @@ const deleteUser = async (req, res, next) => {
 
 const checkEmptyNameAndEmailAndPassword = async (req, res, next) => {
   if (
-    !req.body.name ||
+    !req.body.username ||
     !req.body.email ||
     !req.body.password
   ) {
@@ -62,7 +63,7 @@ const checkEmptyNameAndEmailAndPassword = async (req, res, next) => {
 
 const checkEmptyNameAndEmail = async (req, res, next) => {
   if (
-    !req.body.name ||
+    !req.body.username ||
     !req.body.email
   ) {
     res.setHeader("Content-Type", "application/json");
