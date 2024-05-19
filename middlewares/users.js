@@ -17,15 +17,16 @@ const createUser = async (req, res, next) => {
 }; 
 
 const findUserById = async (req, res, next) => {
+  console.log("GET /users/:id")
   try {
     req.user = await users.findById(req.params.id);
     next();
   } catch (error) {
     res.setHeader("Content-Type", "application/json");
-      res.status(404).send(JSON.stringify({ message: "Игра не найдена" }));
+      res.status(404).send(JSON.stringify({ message: "User not found" }));
   }
 };
 
 module.exports = {findAllUsers,
-  createUser
+  createUser,findUserById
 }; 
