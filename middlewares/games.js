@@ -95,8 +95,8 @@ if (req.body.users.length - 1 === req.game.users.length) {
 }; 
 
 const checkIsGameExists = async (req, res, next) => {
-  const isInArray = req.categoriesArray.find((category) => {
-    return req.body.name === category.name;
+  const isInArray = req.gamesArray.find((game) => {
+    return req.body.title === game.title;
   });
   if (isInArray) {
     res.setHeader("Content-Type", "application/json");
@@ -104,7 +104,7 @@ const checkIsGameExists = async (req, res, next) => {
   } else {
     next();
   }
-};
+}; 
 
 module.exports = {findAllGames,
   createGame,
