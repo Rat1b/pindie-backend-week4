@@ -17,10 +17,17 @@ const sendUserUpdated = (req, res) => {
   res.status(200).send(JSON.stringify({ message: "Пользователь обновлён" }));
 }; 
 
+const sendUserDeleted = (req, res) => {
+  res.setHeader("Content-Type", "application/json");
+  res.end(JSON.stringify(req.game));
+  }; 
+
+
   module.exports = {
     sendAllUsers,
     sendUserCreated,
     sendUserById,
-    sendUserUpdated
+    sendUserUpdated,
+    sendUserDeleted
   };
   

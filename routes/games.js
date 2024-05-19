@@ -2,8 +2,8 @@
 
 const gamesRouter = require('express').Router();
 
-const {findAllGames,findGameById,createGame,updateGame} = require('../middlewares/games');
-const {sendAllGames,sendGameCreated,sendGameById,sendGameUpdated} = require('../controllers/games');
+const {findAllGames,findGameById,createGame,updateGame,deleteGame} = require('../middlewares/games');
+const {sendAllGames,sendGameCreated,sendGameById,sendGameUpdated,sendGameDeleted} = require('../controllers/games');
 
 gamesRouter.get('/games', findAllGames, sendAllGames);
 gamesRouter.post("/games",findAllGames,createGame,sendGameCreated);
@@ -15,6 +15,13 @@ gamesRouter.put(
       
       updateGame,
       sendGameUpdated
-  ); 
+); 
+
+gamesRouter.delete(
+  "/games/:id",
+  deleteGame,
+  sendGameDeleted
+); 
+
 
 module.exports = gamesRouter; 
