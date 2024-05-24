@@ -31,7 +31,17 @@ const createUser = async (req, res, next) => {
         res.status(400).send(JSON.stringify({ message: "Ошибка создания пользователя" }));
   }
 }; 
-
+const checkIsUserExists = async (req, res, next) => {
+  const isInArray = req.usersArray.find((user) => {
+    return req.body.name === user.name;
+  });
+  if (isInArray) {
+    res.setHeader("Content-Type", "application/json");
+        res.status(400).send(JSON.stringify({ message: "Пользователь с таким именем уже существует" }));
+  } else {
+    next();
+  }
+};
 const findUserById = async (req, res, next) => {
   console.log("GET /users/:id")
   try {
@@ -96,5 +106,6 @@ module.exports = {
   deleteUser,
   checkEmptyNameAndEmailAndPassword,
   checkEmptyNameAndEmail,
-  hashPassword
+  hashPassword,
+  checkIsUserExists
 }; 

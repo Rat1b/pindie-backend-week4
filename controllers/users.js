@@ -16,7 +16,10 @@ const sendUserUpdated = (req, res) => {
   res.setHeader("Content-Type", "application/json");
   res.status(200).send(JSON.stringify({ message: "Пользователь обновлён" }));
 }; 
-
+const sendMe = (req, res) => {
+  res.setHeader("Content-Type", "application/json");
+  res.end(JSON.stringify(req.user));
+};
 const sendUserDeleted = (req, res) => {
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(req.game));
@@ -28,6 +31,7 @@ const sendUserDeleted = (req, res) => {
     sendUserCreated,
     sendUserById,
     sendUserUpdated,
-    sendUserDeleted
+    sendUserDeleted,
+    sendMe
   };
   
