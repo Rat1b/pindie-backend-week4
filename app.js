@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const cors = require('./middlewares/cors')
 const mainRoute = require('./routes/main')
 const connectToDatabase = require('./database/connect');
-const apiRouter = require('./routes/apiRouter')
+const apiRouter = require('./routes/api')
 
 
 const app = express()
