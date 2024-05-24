@@ -19,6 +19,6 @@ function cors(req, res, next) {
 } 
 
 
-module.exports = {
-    cors
-}
+module.exports = cors
+
+
