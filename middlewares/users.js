@@ -33,11 +33,11 @@ const createUser = async (req, res, next) => {
 }; 
 const checkIsUserExists = async (req, res, next) => {
   const isInArray = req.usersArray.find((user) => {
-    return req.body.username === user.username;
+    return req.body.email === user.email;
   });
   if (isInArray) {
     res.setHeader("Content-Type", "application/json");
-        res.status(400).send(JSON.stringify({ message: "Пользователь с таким именем уже существует!!" }));
+        res.status(400).send(JSON.stringify({ message: "Пользователь с такой почтой уже существует!!" }));
   } else {
     next();
   }
